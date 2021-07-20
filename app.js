@@ -1,19 +1,28 @@
 const express = require('express');
-const app = express();
+const path = require('path');
+const data = require('./data.json').projects;
 
+
+//Initilizations
+const app = express();
+require('./database');
 
 // Settings
 app.set('view engine', 'pug'); // setting view engine to pug
+
+// app.set('views', path.join(_dirname, 'views')); // allows the concatenations of differents files
+
+//Static Files
 app.use('/static', express.static('public')); // using the public folder at the address /static
 
 
 //Middlewares
-// require all javascript pages
-const mainRoutes = require('./routes');
+
 
 
 //Routes
-// use all javascript pages with its respective route
+// require all javascript pages
+const mainRoutes = require('./routes');
 app.use(mainRoutes);
 
 
